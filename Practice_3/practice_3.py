@@ -6,7 +6,7 @@ from astropy import units as u
 lc_data_folder = 'Practices/Practice_3/LC_Files'
 
 def get_lc_data(filename):
-    '''
+    """
     Load and preprocess a TESS light curve file into an Astropy TimeSeries object.
     
     This function reads a light curve file from the specified folder, parses its
@@ -34,7 +34,7 @@ def get_lc_data(filename):
         If the specified file does not exist in the data folder.
     Exception
         For any other parsing or conversion errors.
-    '''
+    """
     try:
         lc_file = os.path.join(lc_data_folder, filename)
         lc_df = pd.read_csv(lc_file, sep=' ', skiprows = 1, names=['TIME',
@@ -61,7 +61,7 @@ def get_lc_data(filename):
         exit()
 
 def identify_outliers(flux, dates, threshold=3):
-    '''
+    """
     Identify outliers in a light curve using robust sigma-clipping per observing
     date.
 
@@ -84,7 +84,7 @@ def identify_outliers(flux, dates, threshold=3):
     -------
     outlier_mask : ndarray of bool
         Boolean array of the same length as `flux`, where `True` marks an outlier.
-    '''
+    """
     outlier_mask = np.zeros(len(flux), dtype=bool)
     for date in dates:
         mask = dates == date
@@ -97,7 +97,7 @@ def identify_outliers(flux, dates, threshold=3):
     return outlier_mask
 
 def plot_raw_lc(filename, lc_data, threshold=3):
-    '''
+    """
     Plot the raw light curve with flux grouped by observation date and annotated outliers.
 
     This function generates a scatter plot of a light curve with error bars, grouping points
@@ -119,7 +119,7 @@ def plot_raw_lc(filename, lc_data, threshold=3):
       threshold of 3σ.
     - The plot legend is arranged in multiple columns below the plot to avoid overlapping data.
     - The output plot is saved as a PDF in the `Practices/Practice_3/Plots/` directory.
-    '''
+    """
     #plt.rc('xtick', labelsize='x-small')
     #plt.rc('ytick', labelsize='x-small')
     plt.figure(figsize=(10, 6))
