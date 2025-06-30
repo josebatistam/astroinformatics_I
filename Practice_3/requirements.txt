@@ -1,5 +1,4 @@
-numpy
-intertools
-matplotlib
-pandas
-astropy
+astropy==7.1.0
+matplotlib==3.10.3
+numpy==2.3.0
+pandas==2.3.0
